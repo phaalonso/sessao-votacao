@@ -2,8 +2,9 @@
 
 - [x] Cadastrar uma nova pauta
 - [x] Abrir sessão de votação
-- [ ] Receber votos dos associados
-  - [ ] Controle de concorrência para impedir problema na contabilização dos votos
+- [X] Receber votos dos associados
+  - [X] Controle de concorrência para impedir problema na contabilização dos votos
+  - [ ] Validar primeiro se o voto existe (evita lock na linha e segurar outra requisição)
 - [ ] CRUD associado (?)
 - [ ] Testes
   - [ ] Corrigir problema no uso do testcontainers
