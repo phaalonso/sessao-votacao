@@ -1,0 +1,25 @@
+# Sistema de votação
+
+- [x] Cadastrar uma nova pauta
+- [x] Abrir sessão de votação
+- [ ] Receber votos dos associados
+  - [ ] Controle de concorrência para impedir problema na contabilização dos votos
+- [ ] CRUD associado (?)
+- [ ] Testes
+  - [ ] Corrigir problema no uso do testcontainers
+    - Necessário, pois estou utilizado `+ interval ':duration minutes'`, caso não seja solucionado é necessário mudar a forma de atualização
+  - [ ] Testes das rotas
+- [ ] Tarefas Bonus
+  - [ ] Validar CPF do associado 
+  - [ ] Publicar resultados no Kafka 
+    - [ ] Adicionar um status na votação
+    - [ ] Job que verifica as sessões que estão abertas e `NOW() > session_end`
+      - Job pode ser usado para invalidar o cache, garantindo que as consultas do item de performance verifiquem o resultado final da votação
+  - [ ] Performance 
+    - [ ] Testes de performance
+    - [ ] Índice para consulta das votações
+    - [ ] Cache da sessão de votação (TTL de 1s)
+      - Não vejo necessidade de atualizar o cache a cada voto, um TTL de alguns segundos deve ser OK, desde que seja atualizado quando a votação for finalizada
+      - Para atualizar o cache quando a votação for finalizada precisaria incluir um status e algum processo de atualização (cronjob)
+  - Versionamento da API
+    - A API pode ser versionada utilizando uma versão na url base do serviço (ex: `/v1/pautas`), sendo possível utilizar o mesmo serviço com algumas versões (incluindo endpoints a serem depreciados) ou mais de um serviço rodando com um gateway controlando qual vai ser acessado
